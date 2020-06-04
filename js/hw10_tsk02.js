@@ -29,8 +29,8 @@ function human(name, age, gender, interests){
         for(let i=0; i<arguments.length; i++) {
             if(i==0) this.name = arguments[i]
             if(i==1) this.age = arguments[i]
-            if(i==3) this.gender = arguments[i]
-            if(i==4) this.interests = arguments[i]
+            if(i==2) this.gender = arguments[i]
+            if(i==3) this.interests = arguments[i]
         }
     }
 
@@ -51,3 +51,24 @@ human1.set('gender', 'м');
 human1.set('interests', ['Рыбалка', 'Походы', 'Скалолазанье']);
 console.log(human1.getPresentation());
 
+//Студент
+function Student(institut, name, age, gender, interests) {
+    human.call(this, name, age, gender, interests);
+    this.institut = '';
+    if(institut!=undefined) {
+        this.institut = institut;
+    }
+
+    this.getPresentationStudent = function() {
+        let pres = this.getPresentation();
+        pres = pres + `\n обучается в ${this.institut}`;
+        return pres;
+    }
+
+}
+
+let student = new Student();
+console.log(student);
+let student1 = new Student('ITMO', 'Ivanov Petr', 31, 'м', ['Рыбалка', 'Походы', 'Скалолазанье']);
+console.log(student1);
+console.log(student1.getPresentationStudent());
